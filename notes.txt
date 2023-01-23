@@ -1,0 +1,2 @@
+table of contents doesn't need input unless user decides to skip sections. then needs to be dynamic
+provide link to help choose a license
