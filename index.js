@@ -6,6 +6,34 @@ const generateMarkdown = require("./utils/generateMarkdown");
 // array of questions for user
 const questions = [
     {
+        type: 'expand',
+        message: 'Conflict on `file.js`: ',
+        name: 'overwrite',
+        choices: [
+          {
+            key: 'y',
+            name: 'Overwrite',
+            value: 'overwrite',
+          },
+          {
+            key: 'a',
+            name: 'Overwrite this one and all next',
+            value: 'overwrite_all',
+          },
+          {
+            key: 'd',
+            name: 'Show diff',
+            value: 'diff',
+          },
+          new inquirer.Separator(),
+          {
+            key: 'x',
+            name: 'Abort',
+            value: 'abort',
+          },
+        ],
+      },
+    {
         type: 'input',
         name: 'username',
         message: 'What is GitHub Username',
@@ -19,21 +47,32 @@ const questions = [
         type: 'input',
         name: 'title',
         message: 'What is the title of your project',
+        validate: function (input){
+            return required(input, 'Title')
+        }
     },
     {
-        type: 'input',
+        type: 'editor',
         name: 'description',
         message: 'Enter your project description',
+        validate: function (input){
+            return required(input, 'Description')
+        }
     },
     {
         type: 'input',
         name: 'installation',
-        message: 'Enter installation instructions for your project',
+        message: "Enter installation instructions for your project (enter 's' to skip)",
+        // validate: function(input){
+        //     if (input == 's'){
+        //         return true
+        //     }
+        // }
     },
     {
         type: 'input',
         name: 'usage',
-        message: 'Enter usage information',
+        message: 'Enter usage information (enter s to skip)',
     },
     {
         type: 'rawlist',
@@ -59,12 +98,12 @@ const questions = [
     {
         type: 'input',
         name: 'contributing',
-        message: 'Enter contribution guidelines',
+        message: 'Enter contribution guidelines (enter s to skip)',
     },
     {
         type: 'input',
         name: 'tests',
-        message: 'Enter your test instructions',
+        message: 'Enter your test instructions (enter s to (skip)',
     },
 
 ];
@@ -89,3 +128,11 @@ function init() {
 
 // function call to initialize program
 init();
+
+
+function required(input, field){
+    if (input == ''){
+        return `${field} required`
+    }
+    return true
+}
