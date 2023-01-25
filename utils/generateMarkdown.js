@@ -12,14 +12,28 @@ data = {
 
 // function to generate markdown for README
 function generateMarkdown(data) {
+  // console.log(data)
+  // console.log(filterEmptyValues(data))
+  answers = filterEmptyValues(data);
   content = '';
   for (key in data){
-    content += (data[key] == '') ? `` : 
-    (key == 'title') ? `
-    # ${capitaliseFirstLetter(data[key])}` : `
-    ## ${capitaliseFirstLetter(key)}
+    (key == 'title') ? content += `# ${capitaliseFirstLetter(data[key])}
+${generateContentsMarkdown(answers)}` :
+    content += (key == 'username' || key == 'email') ? `` : `
+## ${capitaliseFirstLetter(key)}
 ${data[key]}`
+
+//     content += (data[key] == '' || key == 'username' || key == 'email') ? `` : 
+//     (key == 'title') ? `
+// # ${capitaliseFirstLetter(data[key])}` : `
+// ## ${capitaliseFirstLetter(key)}
+// ${data[key]}`
   }
+  content += `
+## Questions
+My GitHub profile: ${data.username}
+
+If you want to contact me, send me an email at: ${data.email}`
   return content;
 //   return `# ${data.title}
 //   ## Description
@@ -46,8 +60,26 @@ ${data[key]}`
 // `;
 }
 
+function generateContentsMarkdown(data){
+  text = `## Table of Contents`;
+  for (key in data){
+    text += (key == 'title' || key == 'username' || key == 'email') ? `` : `
+* [${capitaliseFirstLetter(key)}](#${key})
+`
+  }
+  if ('username' in data || 'email' in data){text += `* [Questions](#questions)`}
+  return text;
+}
+
 function capitaliseFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function filterEmptyValues(data){
+  Object.keys(data).forEach(key => {
+    if (!data[key]) delete data[key];
+  });
+  return data;
 }
 
 // console.log(generateMarkdown(data))

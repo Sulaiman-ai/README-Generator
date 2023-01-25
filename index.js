@@ -127,7 +127,7 @@ function init() {
 }
 
 // function call to initialize program
-init();
+// init();
 
 
 function required(input, field){
@@ -136,3 +136,25 @@ function required(input, field){
     }
     return true
 }
+
+
+
+const test_data = {
+    "username": "Sulaiman-ai",        
+    "email": "sulaiman.amjad@gmail.com",
+    "title": "Qwerty",
+    "description": "Describe qwerty", 
+    "installation": "Install",        
+    "usage": "Useage",
+    "license": "Boost Software License 1.0",
+    "contributing": "",
+    "tests": ""
+  }
+
+function test(answers){
+    markdown = generateMarkdown(answers)
+    console.log(markdown)
+    writeToFile('MYREADME', markdown);
+}
+
+test(test_data)
