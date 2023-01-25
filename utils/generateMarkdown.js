@@ -11,11 +11,13 @@ data = {
 }
 
 // function to generate markdown for README
-function generateMarkdown(data) {
+function generateMarkdown(data, licenses) {
   // console.log(data)
   // console.log(filterEmptyValues(data))
   answers = filterEmptyValues(data);
   content = '';
+  content += `[![License](https://img.shields.io/badge/license-${licenses[data.license]}-green)](./LICENSE)
+`;
   for (key in data){
     (key == 'title') ? content += `# ${capitaliseFirstLetter(data[key])}
 ${generateContentsMarkdown(answers)}` :

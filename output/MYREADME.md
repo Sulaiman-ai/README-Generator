@@ -1,3 +1,4 @@
+[![License](https://img.shields.io/badge/license-BoostSoftware-green)](./LICENSE)
 # Qwerty
 ## Table of Contents
 * [Description](#description)

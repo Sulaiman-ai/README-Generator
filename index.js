@@ -108,6 +108,22 @@ const questions = [
 
 ];
 
+
+badge_license = {'Apache License 2.0': 'Apache2.0',
+            'GNU General Public License v3.0': 'GNU3.0',
+            'MIT License': 'MIT',
+            'BSD 2-Clause "Simplified" License': 'BSDSimplified',
+            'BSD 3-Clause "New" or "Revised" License': 'BSDRevised',
+            'Boost Software License 1.0': 'BoostSoftware',
+            'Creative Commons Zero v1.0 Universal': 'CCZero1.0',
+            'Eclipse Public License 2.0': 'EclipsePublic',
+            'GNU Affero General Public License v3.0': 'GNUAffero3.0',
+            'GNU General Public License v2.0': 'GNU2.0',
+            'GNU Lesser General Public License v2.1': 'GNULesser2.1',
+            'Mozilla Public License 2.0': 'Mozilla',
+            'The Unlicense': 'Unlicense'
+}
+
 // function to write README file
 function writeToFile(fileName, data) {
     fs.writeFile(`./output/${fileName}.md`, data, err => {
@@ -152,7 +168,7 @@ const test_data = {
   }
 
 function test(answers){
-    markdown = generateMarkdown(answers)
+    markdown = generateMarkdown(answers, badge_license)
     console.log(markdown)
     writeToFile('MYREADME', markdown);
 }
