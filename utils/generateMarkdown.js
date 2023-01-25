@@ -12,7 +12,8 @@ data = {
 
 // function to generate markdown for README
 function generateMarkdown(data, licenses) {
-  // console.log(data)
+  console.log(data)
+  console.log(licenses)
   // console.log(filterEmptyValues(data))
   answers = filterEmptyValues(data);
   content = '';

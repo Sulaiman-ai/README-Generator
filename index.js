@@ -137,13 +137,13 @@ function writeToFile(fileName, data) {
 function init() {
     inquirer.prompt(questions).then((answers) => {
         console.log(JSON.stringify(answers, null, '  '));
-        console.log(generateMarkdown(answers));
-        writeToFile('MYREADME', generateMarkdown(answers));
+        // console.log(generateMarkdown(answers));
+        writeToFile('MYREADME', generateMarkdown(answers, badge_license));
       });
 }
 
 // function call to initialize program
-// init();
+init();
 
 
 function required(input, field){
@@ -173,4 +173,4 @@ function test(answers){
     writeToFile('MYREADME', markdown);
 }
 
-test(test_data)
+// test(test_data)
