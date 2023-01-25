@@ -5,38 +5,38 @@ const generateMarkdown = require("./utils/generateMarkdown");
 
 // array of questions for user
 const questions = [
-    {
-        type: 'expand',
-        message: 'Conflict on `file.js`: ',
-        name: 'overwrite',
-        choices: [
-          {
-            key: 'y',
-            name: 'Overwrite',
-            value: 'overwrite',
-          },
-          {
-            key: 'a',
-            name: 'Overwrite this one and all next',
-            value: 'overwrite_all',
-          },
-          {
-            key: 'd',
-            name: 'Show diff',
-            value: 'diff',
-          },
-          new inquirer.Separator(),
-          {
-            key: 'x',
-            name: 'Abort',
-            value: 'abort',
-          },
-        ],
-      },
+    // {
+    //     type: 'expand',
+    //     message: 'Conflict on `file.js`: ',
+    //     name: 'overwrite',
+    //     choices: [
+    //       {
+    //         key: 'y',
+    //         name: 'Overwrite',
+    //         value: 'overwrite',
+    //       },
+    //       {
+    //         key: 'a',
+    //         name: 'Overwrite this one and all next',
+    //         value: 'overwrite_all',
+    //       },
+    //       {
+    //         key: 'd',
+    //         name: 'Show diff',
+    //         value: 'diff',
+    //       },
+    //       new inquirer.Separator(),
+    //       {
+    //         key: 'x',
+    //         name: 'Abort',
+    //         value: 'abort',
+    //       },
+    //     ],
+    //   },
     {
         type: 'input',
         name: 'username',
-        message: 'What is GitHub Username',
+        message: 'What is your GitHub Username',
     },
     {
         type: 'input',
