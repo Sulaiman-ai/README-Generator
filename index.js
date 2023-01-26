@@ -33,16 +33,7 @@ const questions = [
     //       },
     //     ],
     //   },
-    {
-        type: 'input',
-        name: 'username',
-        message: 'What is your GitHub Username',
-    },
-    {
-        type: 'input',
-        name: 'email',
-        message: 'What is your email',
-    },
+    
     {
         type: 'input',
         name: 'title',
@@ -62,7 +53,7 @@ const questions = [
     {
         type: 'input',
         name: 'installation',
-        message: "Enter installation instructions for your project (enter 's' to skip)",
+        message: "Enter installation instructions for your project (press enter to skip)",
         // validate: function(input){
         //     if (input == 's'){
         //         return true
@@ -72,7 +63,7 @@ const questions = [
     {
         type: 'input',
         name: 'usage',
-        message: 'Enter usage information (enter s to skip)',
+        message: 'Enter usage information (press enter to skip)',
     },
     {
         type: 'rawlist',
@@ -98,12 +89,22 @@ const questions = [
     {
         type: 'input',
         name: 'contributing',
-        message: 'Enter contribution guidelines (enter s to skip)',
+        message: 'Enter contribution guidelines (press enter to skip)',
     },
     {
         type: 'input',
         name: 'tests',
-        message: 'Enter your test instructions (enter s to (skip)',
+        message: 'Enter your test instructions (press enter to skip)',
+    },
+    {
+        type: 'input',
+        name: 'username',
+        message: 'What is your GitHub Username',
+    },
+    {
+        type: 'input',
+        name: 'email',
+        message: 'What is your email',
     },
     {
         type: 'editor',
@@ -113,7 +114,6 @@ const questions = [
         "- Question"
         "Answer"`
     }
-
 ];
 
 

@@ -3,3 +3,8 @@ provide link to help choose a license
 for optional, type s to skip;
 need to provide link to users profile
 allow user to enter additional questions with their answers;
+
+# README-Generator
+
+![License](https://img.shields.io/github/license/Sulaiman-ai/README-Generator)
+[![License](https://img.shields.io/badge/license-BoostSoftware-green)](./LICENSE)
