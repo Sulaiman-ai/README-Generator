@@ -5,35 +5,6 @@ const generateMarkdown = require("./utils/generateMarkdown");
 
 // array of questions for user
 const questions = [
-    // {
-    //     type: 'expand',
-    //     message: 'Conflict on `file.js`: ',
-    //     name: 'overwrite',
-    //     choices: [
-    //       {
-    //         key: 'y',
-    //         name: 'Overwrite',
-    //         value: 'overwrite',
-    //       },
-    //       {
-    //         key: 'a',
-    //         name: 'Overwrite this one and all next',
-    //         value: 'overwrite_all',
-    //       },
-    //       {
-    //         key: 'd',
-    //         name: 'Show diff',
-    //         value: 'diff',
-    //       },
-    //       new inquirer.Separator(),
-    //       {
-    //         key: 'x',
-    //         name: 'Abort',
-    //         value: 'abort',
-    //       },
-    //     ],
-    //   },
-    
     {
         type: 'input',
         name: 'title',
@@ -51,19 +22,16 @@ const questions = [
         }
     },
     {
-        type: 'input',
+        type: 'editor',
         name: 'installation',
-        message: "Enter installation instructions for your project (press enter to skip)",
-        // validate: function(input){
-        //     if (input == 's'){
-        //         return true
-        //     }
-        // }
+        message: `Enter installation instructions for your project 
+(To skip, close editor once opened)`,
     },
     {
-        type: 'input',
+        type: 'editor',
         name: 'usage',
-        message: 'Enter usage information (press enter to skip)',
+        message: `Enter usage information 
+(To skip, close editor once opened)`,
     },
     {
         type: 'rawlist',
@@ -87,14 +55,16 @@ const questions = [
         ]
     },
     {
-        type: 'input',
+        type: 'editor',
         name: 'contributing',
-        message: 'Enter contribution guidelines (press enter to skip)',
+        message: `Enter contribution guidelines 
+(To skip, close editor once opened)`,
     },
     {
-        type: 'input',
+        type: 'editor',
         name: 'tests',
-        message: 'Enter your test instructions (press enter to skip)',
+        message: `Enter your test instructions 
+(To skip, close editor once opened)`,
     },
     {
         type: 'input',
@@ -111,8 +81,9 @@ const questions = [
         name: 'questions',
         message: `Are there any more questions you want the reader of your README to know the answer to?
         Please type your questions and answers in the format:
-        "- Question"
-        "Answer"`
+        "-Question"
+        "*Answer"
+(To skip, close editor once opened)`
     }
 ];
 
@@ -145,7 +116,6 @@ function writeToFile(fileName, data) {
 function init() {
     inquirer.prompt(questions).then((answers) => {
         console.log(JSON.stringify(answers, null, '  '));
-        // console.log(generateMarkdown(answers));
         writeToFile('MYREADME', generateMarkdown(answers, badge_license));
       });
 }
@@ -154,6 +124,7 @@ function init() {
 init();
 
 
+// function to validate questions which require an answer
 function required(input, field){
     if (input == ''){
         return `${field} required`
@@ -177,8 +148,9 @@ const test_data = {
 *LinkedIn: LinkedIn Profile
 -Do you provide any services?
 *Yes, you can find my portfolio at portfolio.com`
-  }
+}
 
+// function to test the application with test data
 function test(answers){
     markdown = generateMarkdown(answers, badge_license)
     // console.log(markdown)

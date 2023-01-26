@@ -1,21 +1,6 @@
-data = {
-  "overwrite": "abort",
-  "username": "suli",
-  "title": "Project",
-  "description": "Describe",
-  "installation": "",
-  "usage": "",
-  "license": "Apache License 2.0",  
-  "contributing": "",
-  "tests": ""
-}
-
 // function to generate markdown for README
 function generateMarkdown(data, licenses) {
   generateQuestionsMarkdown(data.questions)
-  // console.log(data)
-  // console.log(licenses)
-  // console.log(filterEmptyValues(data))
   answers = filterEmptyValues(data);
   content = '';
   content += `[![License](https://img.shields.io/badge/license-${licenses[data.license]}-green)](./LICENSE)
@@ -26,12 +11,6 @@ ${generateContentsMarkdown(answers)}` :
     content += (key == 'username' || key == 'email' || key == 'questions') ? `` : `
 ## ${capitaliseFirstLetter(key)}
 ${data[key]}`
-
-//     content += (data[key] == '' || key == 'username' || key == 'email') ? `` : 
-//     (key == 'title') ? `
-// # ${capitaliseFirstLetter(data[key])}` : `
-// ## ${capitaliseFirstLetter(key)}
-// ${data[key]}`
   }
   content += `
 ## Questions
@@ -39,36 +18,14 @@ ${data[key]}`
 
 **If you want to contact me, send me an email at:** ${data.email}
 
-${generateQuestionsMarkdown(data.questions)}`
+${("questions" in data) ? generateQuestionsMarkdown(data.questions) : ``}`
   return content;
-//   return `# ${data.title}
-//   ## Description
-//   ${data.description}
-//   ## Table of Contents
-//   * [Installation](#installation)
-//   * [Usage](#usage)
-//   * [Credits](#credits)
-//   * [License](#license)
-//   ## Installation
-//   ${data.installation}
-//   ## Usage
-//   ${data.usage}
-//   ## License
-//   ${data.license}
-//   ## Contributing
-//   ${data.contributing}
-//   ## Tests
-//   ${data.tests}
-//   ## Questions
-//   My GitHub profile: ${data.username}
-//   If you want to contact me, send me an email at: ${data.email}
-
-// `;
 }
 
+// function to compile and format the Questions sections
 function generateQuestionsMarkdown(questions){
   let text = '';
-  let questionsArray = questions.split('\n');
+  let questionsArray = questions.split('\r\n');
   for (index in questionsArray){
     let line = questionsArray[index];
     text += (line[0] == '-') ? `**${line.replace('-', '')}**
@@ -77,9 +34,11 @@ function generateQuestionsMarkdown(questions){
 
 ` : ``;
   }
+  console.log('questions', text)
   return text;
 }
 
+// function to generate the Table of Contents
 function generateContentsMarkdown(data){
   text = `## Table of Contents`;
   for (key in data){
@@ -87,7 +46,7 @@ function generateContentsMarkdown(data){
 * [${capitaliseFirstLetter(key)}](#${key})
 `
   }
-  if ('username' in data || 'email' in data){text += `* [Questions](#questions)`}
+  // if ('username' in data || 'email' in data){text += `* [Questions](#questions)`}
   return text;
 }
 
@@ -102,8 +61,21 @@ function filterEmptyValues(data){
   return data;
 }
 
-// console.log(generateMarkdown(data))
+// Testing
 
-function addSection(){}
+let test_data = {
+  "overwrite": "abort",
+  "username": "suli",
+  "title": "Project",
+  "description": "Describe",
+  "installation": "",
+  "usage": "",
+  "license": "Apache License 2.0",  
+  "contributing": "",
+  "tests": ""
+}
+
+// to test just generateMarkdown with the test data
+// console.log(generateMarkdown(test_data))
 
 module.exports = generateMarkdown;
