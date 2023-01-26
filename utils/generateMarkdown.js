@@ -12,8 +12,9 @@ data = {
 
 // function to generate markdown for README
 function generateMarkdown(data, licenses) {
-  console.log(data)
-  console.log(licenses)
+  generateQuestionsMarkdown(data.questions)
+  // console.log(data)
+  // console.log(licenses)
   // console.log(filterEmptyValues(data))
   answers = filterEmptyValues(data);
   content = '';
@@ -22,7 +23,7 @@ function generateMarkdown(data, licenses) {
   for (key in data){
     (key == 'title') ? content += `# ${capitaliseFirstLetter(data[key])}
 ${generateContentsMarkdown(answers)}` :
-    content += (key == 'username' || key == 'email') ? `` : `
+    content += (key == 'username' || key == 'email' || key == 'questions') ? `` : `
 ## ${capitaliseFirstLetter(key)}
 ${data[key]}`
 
@@ -34,9 +35,11 @@ ${data[key]}`
   }
   content += `
 ## Questions
-My GitHub profile: ${data.username}
+**My GitHub profile:** https://github.com/${data.username}
 
-If you want to contact me, send me an email at: ${data.email}`
+**If you want to contact me, send me an email at:** ${data.email}
+
+${generateQuestionsMarkdown(data.questions)}`
   return content;
 //   return `# ${data.title}
 //   ## Description
@@ -61,6 +64,20 @@ If you want to contact me, send me an email at: ${data.email}`
 //   If you want to contact me, send me an email at: ${data.email}
 
 // `;
+}
+
+function generateQuestionsMarkdown(questions){
+  let text = '';
+  let questionsArray = questions.split('\n');
+  for (index in questionsArray){
+    let line = questionsArray[index];
+    text += (line[0] == '-') ? `**${line.replace('-', '')}**
+
+` : (line[0] == '*') ? `${line.replace('*', '')}
+
+` : ``;
+  }
+  return text;
 }
 
 function generateContentsMarkdown(data){

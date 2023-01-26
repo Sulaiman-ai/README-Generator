@@ -1,3 +1,5 @@
 table of contents doesn't need input unless user decides to skip sections. then needs to be dynamic
 provide link to help choose a license
 for optional, type s to skip;
+need to provide link to users profile
+allow user to enter additional questions with their answers;

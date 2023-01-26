@@ -105,6 +105,14 @@ const questions = [
         name: 'tests',
         message: 'Enter your test instructions (enter s to (skip)',
     },
+    {
+        type: 'editor',
+        name: 'questions',
+        message: `Are there any more questions you want the reader of your README to know the answer to?
+        Please type your questions and answers in the format:
+        "- Question"
+        "Answer"`
+    }
 
 ];
 
@@ -164,12 +172,16 @@ const test_data = {
     "usage": "Useage",
     "license": "Boost Software License 1.0",
     "contributing": "",
-    "tests": ""
+    "tests": "",
+    "questions": `-Where to contact me:
+*LinkedIn: LinkedIn Profile
+-Do you provide any services?
+*Yes, you can find my portfolio at portfolio.com`
   }
 
 function test(answers){
     markdown = generateMarkdown(answers, badge_license)
-    console.log(markdown)
+    // console.log(markdown)
     writeToFile('MYREADME', markdown);
 }
 
