@@ -1,4 +1,4 @@
-[![License](https://img.shields.io/badge/license-GNU2.0-green)](./LICENSE)
+[![License](https://img.shields.io/badge/license-GNUAffero3.0-green)](./LICENSE)
 # README Generator
 ## Table of Contents
 * [Description](#description)
@@ -35,7 +35,7 @@ This project generates a README file for the user, based on input that the termi
 2. Enter "node index.js"
 3. Terminal will prompt you with questions, answer the questions and hit enter
 ## License
-GNU General Public License v2.0
+GNU Affero General Public License v3.0
 ## Contributing
 If you wish the contribute to this project and add new features:
 1. Send me an email explaining what you want to add (email written below) and I will add you as a contributor
